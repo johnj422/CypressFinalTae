@@ -2,7 +2,7 @@ class HomePage {
 
     //Navigation
     navigateToHomePage() {
-        cy.visit('https://www.demoblaze.com/');
+        cy.visit('/');
     }
 }
 

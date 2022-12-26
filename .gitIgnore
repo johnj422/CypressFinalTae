@@ -9,6 +9,7 @@ cypress/results/*
 cypress/reports/*
 cypress/screenshots/*
 cypress/videos/*
+cucumber_report/*
 
 ### Node ###
 # Logs
