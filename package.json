@@ -6,12 +6,6 @@
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/e2e",
     "nonGlobalStepDefinitions": true,
-    "filterSpecs": true,
-    "cucumberJson": {
-      "generate": true,
-      "outputFolder": "cucumber_report",
-      "filePrefix": "",
-      "fileSuffix": ".cucumber"
-    }
+    "filterSpecs": true
   }
 }
