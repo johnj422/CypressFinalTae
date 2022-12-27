@@ -1,9 +1,11 @@
 import { Given, When, And, Then } from "cypress-cucumber-preprocessor/steps"
 import HomePage from "../../pages/HomePage"
 import CartPage from "../../pages/CartPage";
+import ProductPage from "../../pages/ProductPage";
 
 const home = new HomePage;
 const cart = new CartPage;
+const product = new ProductPage;
 
 Given('I visit the Homepage', () => {
     home.navigateToHomePage();
@@ -41,7 +43,7 @@ And('I am now in the product page', () => {
 })
 
 And('I click the add to cart button', () => {
-    home.addToCartBtn().should('be.visible')
+    product.addToCartBtn().should('be.visible')
         .click();
 })
 
@@ -60,13 +62,13 @@ Then('The product should be in the cart', () => {
 When('I add some products to the cart', () => {
     home.randomProductLink()
         .click();
-    home.addToCartBtn().should('be.visible')
+    product.addToCartBtn().should('be.visible')
         .click();
     home.homeLink().should('be.visible')
         .click();
     home.randomProductLink()
         .click();
-    home.addToCartBtn().should('be.visible')
+    product.addToCartBtn().should('be.visible')
         .click();
 })
 

@@ -119,10 +119,6 @@ class HomePage {
         return cy.get(`:nth-child(${num}) > .card > .card-block > .card-title > .hrefch`)
     }
 
-    addToCartBtn(){
-        return cy.get('.col-sm-12 > .btn')
-    }
-
 }
 
 export default HomePage;
