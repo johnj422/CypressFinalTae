@@ -123,14 +123,6 @@ class HomePage {
         return cy.get('.col-sm-12 > .btn')
     }
 
-    productsInCartContainer(){
-        return cy.get('.success')
-    }
-
-    deleteProductFromCart(){
-        return cy.get('#tbodyid > :nth-child(1) > :nth-child(4) > a')
-    }
-
 }
 
 export default HomePage;
