@@ -21,4 +21,8 @@ Feature: Navigation Links
         When I click the Cart link
         Then I should de in the Products page
         And The Cart's page title should be "Products"
-       
+
+    Scenario: Validate Log in Link
+        When I click the Log in link
+        And A Log in modal should be opened
+        Then The Log in modal should contains title "Log in"

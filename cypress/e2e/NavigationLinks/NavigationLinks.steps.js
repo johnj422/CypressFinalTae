@@ -42,3 +42,15 @@ Then('I should de in the Products page', () => {
 And('The Cart\'s page title should be {string}', title => {
     home.cartLinkTitle().should('include.text', title);
 })
+
+When('I click the Log in link', () => {
+    home.logInLink().click();
+})
+
+And('A Log in modal should be opened', () => {
+    home.logInModal().should('be.visible');
+})
+
+Then('The Log in modal should contains title {string}', title => {
+    home.logInModalTitle().should('include.text', title);
+})

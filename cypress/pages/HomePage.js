@@ -54,6 +54,18 @@ class HomePage {
     actualUrl(){
         return cy.url()
     }
+
+    logInLink(){
+        return cy.get('#login2')
+    }
+
+    logInModal(){
+        return cy.get('#logInModal > .modal-dialog > .modal-content')
+    }
+
+    logInModalTitle(){
+        return cy.get('#logInModal > .modal-dialog > .modal-content > .modal-header')
+    }
 }
 
 export default HomePage;
