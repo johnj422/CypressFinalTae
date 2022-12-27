@@ -54,3 +54,15 @@ And('A Log in modal should be opened', () => {
 Then('The Log in modal should contains title {string}', title => {
     home.logInModalTitle().should('include.text', title);
 })
+
+When('I click the Sign up link', () => {
+    home.signUpLink().click();
+})
+
+And('A Sign up modal should be opened', () => {
+    home.signUpModal().should('be.visible');
+})
+
+Then('The Sign up modal should contains title {string}', title => {
+    home.signUpModalTitle().should('include.text', title);
+})

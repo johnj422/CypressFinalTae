@@ -26,3 +26,8 @@ Feature: Navigation Links
         When I click the Log in link
         And A Log in modal should be opened
         Then The Log in modal should contains title "Log in"
+
+    Scenario: Validate Sign up Link
+        When I click the Sign up link
+        And A Sign up modal should be opened
+        Then The Sign up modal should contains title "Sign up"

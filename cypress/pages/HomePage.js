@@ -66,6 +66,18 @@ class HomePage {
     logInModalTitle(){
         return cy.get('#logInModal > .modal-dialog > .modal-content > .modal-header')
     }
+
+    signUpLink(){
+        return cy.get('#signin2')
+    }
+
+    signUpModal(){
+        return cy.get('#signInModal > .modal-dialog > .modal-content')
+    }
+
+    signUpModalTitle(){
+        return cy.get('#signInModal > .modal-dialog > .modal-content > .modal-header')
+    }
 }
 
 export default HomePage;
