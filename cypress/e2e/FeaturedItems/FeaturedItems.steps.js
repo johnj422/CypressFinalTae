@@ -8,7 +8,7 @@ Given('I visit the Homepage', () => {
 })
 
 When('I see the featured items carrousel', () => {
-    home.featuredItems().should('be.visible')
+    home.featuredItemsContainer().should('be.visible')
 })
 
 Then('The carrousel must have {int} items', items => {

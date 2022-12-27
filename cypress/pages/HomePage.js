@@ -6,6 +6,9 @@ class HomePage {
     }
 
     //Locators
+    featuredItemsContainer(){
+        return cy.get('#carouselExampleIndicators > div')
+    }
     featuredItems() {
         return cy.get('#carouselExampleIndicators > div > div')
     }
