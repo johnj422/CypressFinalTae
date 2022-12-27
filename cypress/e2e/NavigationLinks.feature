@@ -10,9 +10,15 @@ Feature: Navigation Links
     Scenario: Validate Contact Link
         When I click the Contact link
         And A contact modal should be opened
-        Then The modal should contains title New message
+        Then The contact modal should contains title "New message"
 
     Scenario: Validate About Us Link
         When I click the About Us link
         And An about us modal should be opened
-        Then The modal should contains title About us
+        Then The About us modal should contains title "About us"
+
+    Scenario: Validate Cart Link
+        When I click the Cart link
+        Then I should de in the Products page
+        And The Cart's page title should be "Products"
+       

@@ -15,8 +15,8 @@ And('A contact modal should be opened', () => {
     home.contactModal().should('be.visible');
 })
 
-Then('The modal should contains title New message', () => {
-    home.contactModalTitle().should('include.text', 'New message');
+Then('The contact modal should contains title {string}', message => {
+    home.contactModalTitle().should('include.text', message);
 })
 
 When('I click the About Us link', () => {
@@ -27,7 +27,18 @@ And('An about us modal should be opened', () => {
     home.aboutUsModal().should('be.visible');
 })
 
-Then('The modal should contains title About us', () => {
-    home.aboutUsModalTitle().should('be.visible');
-    home.aboutUsModalTitle().should('include.text', 'About us');
+Then('The About us modal should contains title {string}', message => {
+    home.aboutUsModalTitle().should('include.text', message);
+})
+
+When('I click the Cart link', () => {
+    home.cartLink().click();
+})
+
+Then('I should de in the Products page', () => {
+    home.actualUrl().should('contain', '/cart.html')
+})
+
+And('The Cart\'s page title should be {string}', title => {
+    home.cartLinkTitle().should('include.text', title);
 })

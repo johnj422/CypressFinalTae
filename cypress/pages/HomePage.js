@@ -42,6 +42,18 @@ class HomePage {
     aboutUsModalTitle(){
         return cy.get('#videoModal > .modal-dialog > .modal-content > .modal-header')
     }
+
+    cartLink(){
+        return cy.get('#cartur')
+    }
+
+    cartLinkTitle(){
+        return cy.get('.col-lg-8 > h2')
+    }
+
+    actualUrl(){
+        return cy.url()
+    }
 }
 
 export default HomePage;
