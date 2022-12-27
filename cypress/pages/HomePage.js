@@ -78,6 +78,14 @@ class HomePage {
     signUpModalTitle(){
         return cy.get('#signInModal > .modal-dialog > .modal-content > .modal-header')
     }
+
+    homeLink(){
+        return cy.get('.active > .nav-link')
+    }
+
+    categoriesBtn(){
+        return cy.get('#cat')
+    }
 }
 
 export default HomePage;

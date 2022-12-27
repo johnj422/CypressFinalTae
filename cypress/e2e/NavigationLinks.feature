@@ -31,3 +31,7 @@ Feature: Navigation Links
         When I click the Sign up link
         And A Sign up modal should be opened
         Then The Sign up modal should contains title "Sign up"
+
+    Scenario: Validate Home Link
+        When I click the Home link
+        Then The Categories button should be visible
