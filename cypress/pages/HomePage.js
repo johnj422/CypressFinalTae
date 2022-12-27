@@ -106,6 +106,31 @@ class HomePage {
     monitorsCategoryBtn(){
         return cy.get('[onclick="byCat(\'monitor\')"]')
     }
+
+    productRandom(){
+        let min = Math.ceil(1)
+        let max = Math.floor(7)
+
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    randomProductLink(){
+        let num = this.productRandom()
+        return cy.get(`:nth-child(${num}) > .card > .card-block > .card-title > .hrefch`)
+    }
+
+    addToCartBtn(){
+        return cy.get('.col-sm-12 > .btn')
+    }
+
+    productsInCartContainer(){
+        return cy.get('.success')
+    }
+
+    deleteProductFromCart(){
+        return cy.get('#tbodyid > :nth-child(1) > :nth-child(4) > a')
+    }
+
 }
 
 export default HomePage;

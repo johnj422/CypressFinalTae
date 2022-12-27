@@ -29,3 +29,56 @@ When('I click the Monitors button', () => {
     home.monitorsCategoryBtn().should('be.visible')
         .click();
 })
+
+When('I click one of the products from de the Home Page', () => {
+    home.randomProductLink().click();
+})
+
+And('I am now in the product page', () => {
+    home.actualUrl().should('contain', '/prod.html')
+})
+
+And('I click the add to cart button', () => {
+    home.addToCartBtn().should('be.visible')
+        .click();
+})
+
+And('An alert window with {string} text is shown', message => {
+    cy.on('window:alert', (txt) => {
+        expect(txt).to.contain(message);
+    })
+})
+
+Then('The product should be in the cart', () => {
+    home.cartLink().should('be.visible')
+        .click();
+    home.productsInCartContainer().should('be.visible')
+})
+
+When('I add some products to the cart', () => {
+    home.randomProductLink()
+        .click();
+    home.addToCartBtn().should('be.visible')
+        .click();
+    home.homeLink().should('be.visible')
+        .click();
+    home.randomProductLink()
+        .click();
+    home.addToCartBtn().should('be.visible')
+        .click();
+})
+
+And('I click the cart link', () => {
+    home.cartLink().should('be.visible')
+       .click();
+})
+
+And('I validate that there are {int} products in the cart', products => {
+    home.productsInCartContainer().should('have.length', products)
+})
+
+Then('I should be able to delete one product', () => {
+    home.deleteProductFromCart().should('be.visible')
+    .click();
+    home.productsInCartContainer().should('have.length', 1)
+})
