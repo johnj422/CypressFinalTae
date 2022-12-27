@@ -1,15 +1,32 @@
 {
+  
+  "name": "cypressfinaltae",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnj422/CypressFinalTae.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnj422/CypressFinalTae/issues"
+  },
+  "homepage": "https://github.com/johnj422/CypressFinalTae#readme",
+  "description": "",
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.34.0",
+    "cypress": "^12.2.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/e2e",
     "nonGlobalStepDefinitions": true,
-    "filterSpecs": true,
-    "cucumberJson": {
-      "generate": true,
-      "outputFolder": "cucumber_report",
-      "filePrefix": "",
-      "fileSuffix": ".cucumber"
-    }
+    "filterSpecs": true
   }
 }
