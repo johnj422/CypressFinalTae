@@ -86,6 +86,26 @@ class HomePage {
     categoriesBtn(){
         return cy.get('#cat')
     }
+
+    phonesCategoryBtn(){
+        return cy.get('[onclick="byCat(\'phone\')"]')
+    }
+
+    productsContainer(){
+        return cy.get('#tbodyid')
+    }
+
+    productsList(){
+        return cy.get('#tbodyid > ')
+    }
+
+    laptopsCategoryBtn(){
+        return cy.get('[onclick="byCat(\'notebook\')"]')
+    }
+
+    monitorsCategoryBtn(){
+        return cy.get('[onclick="byCat(\'monitor\')"]')
+    }
 }
 
 export default HomePage;
