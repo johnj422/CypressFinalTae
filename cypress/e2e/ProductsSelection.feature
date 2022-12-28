@@ -22,6 +22,7 @@ Feature: Products and Categories section
         And Products section is updated
         Then The section must contains 2 products
 
+    @smoke
     Scenario: Validate that products can be added to cart
         When I click one of the products from de the Home Page
         And I am now in the product page
@@ -29,12 +30,14 @@ Feature: Products and Categories section
         And An alert window with 'Product added' text is shown
         Then The product should be in the cart
 
+    @smoke
     Scenario: Validate that products can be removed from the cart
         When I add some products to the cart
         And I click the cart link
         And I validate that there are 2 products in the cart
         Then I should be able to delete one product
  
+    @smoke
     Scenario: Validate that products can be purchased
         When I add some products to the cart
         And I click the cart link
