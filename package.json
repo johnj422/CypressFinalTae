@@ -5,7 +5,8 @@
   "main": "cypress.config.js",
 
   "scripts": {
-    "test": "npx cypress open"
+    "test": "npx cypress open",
+    "dev:test": "npx cypress open TAGS='@focus'"
   },
   "repository": {
     "type": "git",

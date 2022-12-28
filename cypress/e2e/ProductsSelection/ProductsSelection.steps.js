@@ -74,7 +74,7 @@ When('I add some products to the cart', () => {
 
 And('I click the cart link', () => {
     home.cartLink().should('be.visible')
-       .click();
+        .click();
 })
 
 And('I validate that there are {int} products in the cart', products => {
@@ -83,6 +83,23 @@ And('I validate that there are {int} products in the cart', products => {
 
 Then('I should be able to delete one product', () => {
     cart.deleteProductFromCart().should('be.visible')
-    .click();
+        .click();
     cart.productsInCartContainer().should('have.length', 1)
+})
+
+And('I click the place order button', () => {
+    product.purchaseBtn().should('be.visible')
+        .click();
+})
+
+And('I complete the form', () => {
+    product.purchaseModal().should('be.visible')
+    product.fillForm();
+    product.confirmationBtn().should('be.visible')
+        .click();
+})
+
+Then('The purchase must be completed', () => {
+    product.confirmationAlert().should('be.visible')
+    product.confirmationAlertTitle().should('have.text', 'Thank you for your purchase!')
 })

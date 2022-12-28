@@ -34,3 +34,10 @@ Feature: Products and Categories section
         And I click the cart link
         And I validate that there are 2 products in the cart
         Then I should be able to delete one product
+ 
+    Scenario: Validate that products can be purchased
+        When I add some products to the cart
+        And I click the cart link
+        And I click the place order button
+        And I complete the form
+        Then The purchase must be completed
