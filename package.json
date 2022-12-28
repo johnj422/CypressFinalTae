@@ -6,7 +6,8 @@
 
   "scripts": {
     "test": "npx cypress open",
-    "dev:test": "npx cypress open TAGS='@focus'"
+    "smoke": "npx cypress run -e TAGS=@smoke",
+    "regression": "npx cypress run -e TAGS=@regression"
   },
   "repository": {
     "type": "git",
