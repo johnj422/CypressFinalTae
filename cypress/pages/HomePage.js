@@ -86,6 +86,39 @@ class HomePage {
     categoriesBtn(){
         return cy.get('#cat')
     }
+
+    phonesCategoryBtn(){
+        return cy.get('[onclick="byCat(\'phone\')"]')
+    }
+
+    productsContainer(){
+        return cy.get('#tbodyid')
+    }
+
+    productsList(){
+        return cy.get('#tbodyid > ')
+    }
+
+    laptopsCategoryBtn(){
+        return cy.get('[onclick="byCat(\'notebook\')"]')
+    }
+
+    monitorsCategoryBtn(){
+        return cy.get('[onclick="byCat(\'monitor\')"]')
+    }
+
+    productRandom(){
+        let min = Math.ceil(1)
+        let max = Math.floor(7)
+
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    randomProductLink(){
+        let num = this.productRandom()
+        return cy.get(`:nth-child(${num}) > .card > .card-block > .card-title > .hrefch`)
+    }
+
 }
 
 export default HomePage;
