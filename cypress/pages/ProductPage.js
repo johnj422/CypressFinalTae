@@ -55,7 +55,7 @@ class ProductPage extends HomePage {
     }
 
     interceptResponse() {
-        return cy.get('@purchaseConfirmation')
+        return cy.wait('@purchaseConfirmation')
             .then(res => {
                 return (res)
             })
