@@ -19,13 +19,12 @@ class ProductPage {
         let selectors = ['name', 'country', 'city', 'card', 'month', 'year' ]
 
         selectors.forEach(selector => {
-            cy.get(`#${selector}`).type(userData[selector])
+            cy.get(`#${selector}`, { timeout: 5000}).type(userData[selector])
         })
 
     }
 
     confirmationBtn() {
-        //return cy.get('#orderModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary')
         return cy.get('#orderModal >').contains('Purchase')
     }
 
