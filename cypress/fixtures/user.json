@@ -2,7 +2,7 @@
   "name": "Tom Smith",
   "country": "US",
   "city": "Miami",
-  "creditCard": "123456789012",
+  "card": "123456789012",
   "month": "03",
   "year": "2025"
 }
