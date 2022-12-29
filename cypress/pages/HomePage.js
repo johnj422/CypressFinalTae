@@ -10,7 +10,10 @@ var locator = {
     cartLinkTitle: '.col-lg-8 > h2',
     loginModal: '#logInModal',
     signUpModal: '#signInModal',
-    categoriesBtn: '#cat'
+    categoriesBtn: '#cat',
+    categoriesSelectionBtn: '#contcont > :nth-child(1) > .col-lg-3',
+    productsContainer: '#tbodyid',
+    productsList: '#tbodyid > ',
 }
 
 class HomePage {
@@ -38,7 +41,7 @@ class HomePage {
         return cy.get(locator.nextBtn);
     }
 
-    clickNextBtn(){
+    clickNextBtn() {
         this.nextBtn().click();
     }
 
@@ -46,7 +49,7 @@ class HomePage {
         return cy.get(locator.prevBtn);
     }
 
-    clickPrevBtn(){
+    clickPrevBtn() {
         this.prevBtn().click();
     }
 
@@ -87,36 +90,34 @@ class HomePage {
         return cy.get(locator.categoriesBtn)
     }
 
-    phonesCategoryBtn() {
-        return cy.get('[onclick="byCat(\'phone\')"]')
+    categoriesSelectionBtn(category) {
+        return cy.get(locator.categoriesSelectionBtn)
+            .contains(category)
+    }
+
+    clickCategory(category) {
+        this.categoriesSelectionBtn(category).click();
     }
 
     productsContainer() {
-        return cy.get('#tbodyid')
+        return cy.get(locator.productsContainer)
     }
 
     productsList() {
-        return cy.get('#tbodyid > ')
-    }
-
-    laptopsCategoryBtn() {
-        return cy.get('[onclick="byCat(\'notebook\')"]')
-    }
-
-    monitorsCategoryBtn() {
-        return cy.get('[onclick="byCat(\'monitor\')"]')
+        return cy.get(locator.productsList)
     }
 
     productRandom() {
         let min = Math.ceil(1)
-        let max = Math.floor(7)
+        let max = Math.floor(9)
 
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    randomProductLink() {
+    clickRandomProductLink() {
         let num = this.productRandom()
-        return cy.get(`:nth-child(${num}) > .card > .card-block > .card-title > .hrefch`)
+        cy.get(`:nth-child(${num}) > .card > .card-block > .card-title > .hrefch`)
+            .click();
     }
 
 }
