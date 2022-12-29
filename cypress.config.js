@@ -9,8 +9,10 @@ module.exports = {
  
   "viewportWidth": 1400,
   "viewportHeight": 800,
+  "defaultCommandTimeout": 15000,	
   "env": {
-    "TAGS": "not @ignore"
+    "TAGS": "not @ignore",
+    "allure": true
   },
 
   e2e: {

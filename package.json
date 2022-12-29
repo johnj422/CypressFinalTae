@@ -1,13 +1,12 @@
 {
-  
   "name": "cypressfinaltae",
   "version": "1.0.0",
   "main": "cypress.config.js",
-
   "scripts": {
     "test": "npx cypress open",
-    "smoke": "npx cypress run -e TAGS=@smoke",
-    "regression": "npx cypress run -e TAGS=@regression"
+    "smoke": "npx cypress run -e TAGS=@smoke ",
+    "regression": "npx cypress run -e TAGS=@regression",
+    "allure:results": "npx allure serve allure-results/"
   },
   "repository": {
     "type": "git",
