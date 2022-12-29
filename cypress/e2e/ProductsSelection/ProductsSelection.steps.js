@@ -14,6 +14,7 @@ Given('I visit the Homepage', () => {
 When('I click the Phones button', () => {
     home.phonesCategoryBtn().should('be.visible')
         .click();
+    product.requestResponse().should('eq', 200)
 })
 
 And('Products section is updated', () => {
@@ -27,11 +28,13 @@ Then('The section must contains {int} products', products => {
 When('I click the Laptops button', () => {
     home.laptopsCategoryBtn().should('be.visible')
         .click();
+    product.requestResponse().should('eq', 200)
 })
 
 When('I click the Monitors button', () => {
     home.monitorsCategoryBtn().should('be.visible')
         .click();
+    product.requestResponse().should('eq', 200)
 })
 
 When('I click one of the products from de the Home Page', () => {
@@ -95,8 +98,8 @@ And('I click the place order button', () => {
 And('I complete the form', () => {
     product.purchaseModal().should('be.visible')
     product.fillForm();
-    product.confirmationBtn().should('be.visible')
-        .click();
+    product.clickConfirmationBtn()
+    product.interceptResponse().its('response.statusMessage').should('eq', 'OK')
 })
 
 Then('The purchase must be completed', () => {

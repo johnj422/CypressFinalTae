@@ -7,7 +7,7 @@
     "smoke:run": "npx cypress run -e TAGS=@smoke",
     "smoke:open": "npx cypress open -e TAGS=@smoke",
     "focus:run": "npx cypress run -e TAGS=@focus",
-    "focus:open": "npx cypress run -e TAGS=@focus",
+    "focus:open": "npx cypress open -e TAGS=@focus",
     "regression:run": "npx cypress run -e TAGS=@regression",
     "regression:open": "npx cypress run -e TAGS=@regression",
     "allure:results": "npx allure serve allure-results/"

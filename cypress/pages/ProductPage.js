@@ -2,37 +2,61 @@ import userData from '../fixtures/user.json';
 
 class ProductPage {
 
-    addToCartBtn(){
+    addToCartBtn() {
         return cy.get('.col-sm-12 > .btn')
     }
 
-    purchaseBtn(){
+    purchaseBtn() {
         return cy.get('.col-lg-1 > .btn')
     }
 
-    purchaseModal(){
+    purchaseModal() {
         return cy.get('#orderModal >')
     }
 
-    fillForm(){
-        cy.get('#name').type(userData.name)
-        cy.get('#country').type(userData.country)
-        cy.get('#city').type(userData.city)
-        cy.get('#card').type(userData.creditCard)
-        cy.get('#month').type(userData.month)
-        cy.get('#year').type(userData.year)
+    fillForm() {
+
+        let selectors = ['name', 'country', 'city', 'card', 'month', 'year' ]
+
+        selectors.forEach(selector => {
+            cy.get(`#${selector}`).type(userData[selector])
+        })
+
     }
 
-    confirmationBtn(){
-        return cy.get('#orderModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary')
+    confirmationBtn() {
+        //return cy.get('#orderModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary')
+        return cy.get('#orderModal >').contains('Purchase')
     }
 
-    confirmationAlert(){
+    clickConfirmationBtn() {
+        cy.intercept('POST', '/deletecart')
+            .as('purchaseConfirmation')
+            .then(() => {
+                this.confirmationBtn().click();
+            })
+    }
+
+    interceptResponse() {
+        return cy.get('@purchaseConfirmation')
+            .then(res => {
+                return (res)
+            })
+    }
+
+    confirmationAlert() {
         return cy.get('.sweet-alert')
     }
 
-    confirmationAlertTitle(){
+    confirmationAlertTitle() {
         return cy.get('.sweet-alert > h2')
+    }
+
+    requestResponse() {
+        return cy.request('https://api.demoblaze.com/entries').as('clickResponse')
+            .then(res => {
+                return (res.status)
+            })
     }
 }
 
