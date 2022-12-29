@@ -55,7 +55,7 @@ class ProductPage extends HomePage {
     }
 
     interceptResponse() {
-        return cy.wait('@purchaseConfirmation')
+        return cy.wait('@purchaseConfirmation', { timeout: 10000})
             .then(res => {
                 return (res)
             })
