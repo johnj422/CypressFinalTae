@@ -7,8 +7,8 @@ Given('I visit the Homepage', () => {
     home.navigateToHomePage();
 })
 
-When('I click the Contact link', () => {
-    home.contactLink().click();
+When('I click the {string} link', description => {
+    home.clickNavLink(description);
 })
 
 And('A contact modal should be opened', () => {
@@ -16,11 +16,7 @@ And('A contact modal should be opened', () => {
 })
 
 Then('The contact modal should contains title {string}', message => {
-    home.contactModalTitle().should('include.text', message);
-})
-
-When('I click the About Us link', () => {
-    home.aboutUsLink().click();
+    home.contactModal().should('include.text', message);
 })
 
 And('An about us modal should be opened', () => {
@@ -28,23 +24,15 @@ And('An about us modal should be opened', () => {
 })
 
 Then('The About us modal should contains title {string}', message => {
-    home.aboutUsModalTitle().should('include.text', message);
+    home.aboutUsModal().should('include.text', message);
 })
 
-When('I click the Cart link', () => {
-    home.cartLink().click();
-})
-
-Then('I should de in the Products page', () => {
-    home.actualUrl().should('contain', '/cart.html')
+Then('I should be in the {string} page', page => {
+    home.actualUrl().should('contain', `/${page}`);
 })
 
 And('The Cart\'s page title should be {string}', title => {
     home.cartLinkTitle().should('include.text', title);
-})
-
-When('I click the Log in link', () => {
-    home.logInLink().click();
 })
 
 And('A Log in modal should be opened', () => {
@@ -52,11 +40,7 @@ And('A Log in modal should be opened', () => {
 })
 
 Then('The Log in modal should contains title {string}', title => {
-    home.logInModalTitle().should('include.text', title);
-})
-
-When('I click the Sign up link', () => {
-    home.signUpLink().click();
+    home.logInModal().should('include.text', title);
 })
 
 And('A Sign up modal should be opened', () => {
@@ -64,11 +48,7 @@ And('A Sign up modal should be opened', () => {
 })
 
 Then('The Sign up modal should contains title {string}', title => {
-    home.signUpModalTitle().should('include.text', title);
-})
-
-When('I click the Home link', () => {
-    home.homeLink().click();
+    home.signUpModal().should('include.text', title);
 })
 
 Then('The Categories button should be visible', () => {

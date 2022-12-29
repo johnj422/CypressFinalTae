@@ -4,6 +4,13 @@ var locator = {
     featuredItems: '#carouselExampleIndicators',
     nextBtn: '.carousel-control-next',
     prevBtn: '.carousel-control-prev',
+    navLink: '.nav-link',
+    contactModal: '#exampleModal',
+    aboutUsModal: '#videoModal',
+    cartLinkTitle: '.col-lg-8 > h2',
+    loginModal: '#logInModal',
+    signUpModal: '#signInModal',
+    categoriesBtn: '#cat'
 }
 
 class HomePage {
@@ -42,70 +49,42 @@ class HomePage {
     clickPrevBtn(){
         this.prevBtn().click();
     }
-    contactLink() {
-        return cy.get(':nth-child(2) > .nav-link')
+
+    //NavigationLinks Methods
+    navLink(description) {
+        return cy.get(locator.navLink).contains(description)
+    }
+
+    clickNavLink(description) {
+        this.navLink(description).click();
     }
 
     contactModal() {
-        return cy.get('#exampleModal > div')
-    }
-    contactModalTitle() {
-        return cy.get('#exampleModal > .modal-dialog > .modal-content > .modal-header')
-    }
-    aboutUsLink() {
-        return cy.get(':nth-child(3) > .nav-link')
+        return cy.get(locator.contactModal)
     }
 
     aboutUsModal() {
-        return cy.get('#videoModal > .modal-dialog')
-    }
-
-    aboutUsModalTitle() {
-        return cy.get('#videoModal > .modal-dialog > .modal-content > .modal-header')
-    }
-
-    cartLink() {
-        return cy.get('#cartur')
+        return cy.get(locator.aboutUsModal)
     }
 
     cartLinkTitle() {
-        return cy.get('.col-lg-8 > h2')
+        return cy.get(locator.cartLinkTitle)
     }
 
     actualUrl() {
         return cy.url()
     }
 
-    logInLink() {
-        return cy.get('#login2')
-    }
-
     logInModal() {
-        return cy.get('#logInModal > .modal-dialog > .modal-content')
-    }
-
-    logInModalTitle() {
-        return cy.get('#logInModal > .modal-dialog > .modal-content > .modal-header')
-    }
-
-    signUpLink() {
-        return cy.get('#signin2')
+        return cy.get(locator.loginModal)
     }
 
     signUpModal() {
-        return cy.get('#signInModal > .modal-dialog > .modal-content')
-    }
-
-    signUpModalTitle() {
-        return cy.get('#signInModal > .modal-dialog > .modal-content > .modal-header')
-    }
-
-    homeLink() {
-        return cy.get('.active > .nav-link')
+        return cy.get(locator.signUpModal)
     }
 
     categoriesBtn() {
-        return cy.get('#cat')
+        return cy.get(locator.categoriesBtn)
     }
 
     phonesCategoryBtn() {
