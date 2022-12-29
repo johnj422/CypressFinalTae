@@ -1,3 +1,21 @@
+
+var locator = {
+    //Featured Items Locators
+    featuredItems: '#carouselExampleIndicators',
+    nextBtn: '.carousel-control-next',
+    prevBtn: '.carousel-control-prev',
+    navLink: '.nav-link',
+    contactModal: '#exampleModal',
+    aboutUsModal: '#videoModal',
+    cartLinkTitle: '.col-lg-8 > h2',
+    loginModal: '#logInModal',
+    signUpModal: '#signInModal',
+    categoriesBtn: '#cat',
+    categoriesSelectionBtn: '#contcont > :nth-child(1) > .col-lg-3',
+    productsContainer: '#tbodyid',
+    productsList: '#tbodyid > ',
+}
+
 class HomePage {
 
     //Navigation
@@ -5,118 +23,101 @@ class HomePage {
         cy.visit('/');
     }
 
-    //Locators
-    featuredItemsContainer(){
-        return cy.get('#carouselExampleIndicators > div')
-    }
-    featuredItems() {
-        return cy.get('#carouselExampleIndicators > div > div')
-    }
-    featuredItem(itemNumber){
-        return cy.get('#carouselExampleIndicators > div > div:nth-child(' + itemNumber + ')');
-    }
-    nextBtn(){
-        return cy.get('.carousel-control-next')
-    }
-    prevBtn(){
-        return cy.get('.carousel-control-prev')
-    }
-    contactLink(){
-        return cy.get(':nth-child(2) > .nav-link')
+    //FeaturedItems Methods
+
+    featuredItemsContainer() {
+        return cy.get(`${locator.featuredItems} > div`);
     }
 
-    contactModal(){
-        return cy.get('#exampleModal > div')
-    }
-    contactModalTitle(){
-        return cy.get('#exampleModal > .modal-dialog > .modal-content > .modal-header')
-    }
-    aboutUsLink(){
-        return cy.get(':nth-child(3) > .nav-link')
+    featuredItemsArray() {
+        return cy.get(`${locator.featuredItems} > div > div`);
     }
 
-    aboutUsModal(){
-        return cy.get('#videoModal > .modal-dialog')
+    featuredItemByIndex(itemNumber) {
+        return cy.get(`${locator.featuredItems} > div > div:nth-child(${itemNumber})`);
     }
 
-    aboutUsModalTitle(){
-        return cy.get('#videoModal > .modal-dialog > .modal-content > .modal-header')
+    nextBtn() {
+        return cy.get(locator.nextBtn);
     }
 
-    cartLink(){
-        return cy.get('#cartur')
+    clickNextBtn() {
+        this.nextBtn().click();
     }
 
-    cartLinkTitle(){
-        return cy.get('.col-lg-8 > h2')
+    prevBtn() {
+        return cy.get(locator.prevBtn);
     }
 
-    actualUrl(){
+    clickPrevBtn() {
+        this.prevBtn().click();
+    }
+
+    //NavigationLinks Methods
+    navLink(description) {
+        return cy.get(locator.navLink).contains(description)
+    }
+
+    clickNavLink(description) {
+        this.navLink(description).click();
+    }
+
+    contactModal() {
+        return cy.get(locator.contactModal)
+    }
+
+    aboutUsModal() {
+        return cy.get(locator.aboutUsModal)
+    }
+
+    cartLinkTitle() {
+        return cy.get(locator.cartLinkTitle)
+    }
+
+    actualUrl() {
         return cy.url()
     }
 
-    logInLink(){
-        return cy.get('#login2')
+    logInModal() {
+        return cy.get(locator.loginModal)
     }
 
-    logInModal(){
-        return cy.get('#logInModal > .modal-dialog > .modal-content')
+    signUpModal() {
+        return cy.get(locator.signUpModal)
     }
 
-    logInModalTitle(){
-        return cy.get('#logInModal > .modal-dialog > .modal-content > .modal-header')
+    categoriesBtn() {
+        return cy.get(locator.categoriesBtn)
     }
 
-    signUpLink(){
-        return cy.get('#signin2')
+    categoriesSelectionBtn(category) {
+        return cy.get(locator.categoriesSelectionBtn)
+            .contains(category)
     }
 
-    signUpModal(){
-        return cy.get('#signInModal > .modal-dialog > .modal-content')
+    clickCategory(category) {
+        this.categoriesSelectionBtn(category).click();
     }
 
-    signUpModalTitle(){
-        return cy.get('#signInModal > .modal-dialog > .modal-content > .modal-header')
+    productsContainer() {
+        return cy.get(locator.productsContainer)
     }
 
-    homeLink(){
-        return cy.get('.active > .nav-link')
+    productsList() {
+        return cy.get(locator.productsList)
     }
 
-    categoriesBtn(){
-        return cy.get('#cat')
-    }
-
-    phonesCategoryBtn(){
-        return cy.get('[onclick="byCat(\'phone\')"]')
-    }
-
-    productsContainer(){
-        return cy.get('#tbodyid')
-    }
-
-    productsList(){
-        return cy.get('#tbodyid > ')
-    }
-
-    laptopsCategoryBtn(){
-        return cy.get('[onclick="byCat(\'notebook\')"]')
-    }
-
-    monitorsCategoryBtn(){
-        return cy.get('[onclick="byCat(\'monitor\')"]')
-    }
-
-    productRandom(){
+    productRandom() {
         let min = Math.ceil(1)
-        let max = Math.floor(7)
+        let max = Math.floor(9)
 
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    randomProductLink(){
+    clickRandomProductLink() {
         let num = this.productRandom()
-        return cy.get(`:nth-child(${num}) > .card > .card-block > .card-title > .hrefch`)
+        cy.get(`:nth-child(${num}) > .card > .card-block > .card-title > .hrefch`)
+            .click();
     }
 
 }

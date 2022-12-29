@@ -1,17 +1,35 @@
 import userData from '../fixtures/user.json';
+import endPoints from '../fixtures/endPoints.json';
+import HomePage from './HomePage';
 
-class ProductPage {
+var locator = {
+    addToCart: '.col-sm-12 > .btn',
+    purchaseBtn: '.col-lg-1 > .btn',
+    purchaseModal: '#orderModal >',
+    confirmationAlert: '.sweet-alert'
+}
+
+class ProductPage extends HomePage {
 
     addToCartBtn() {
-        return cy.get('.col-sm-12 > .btn')
+        return cy.get(locator.addToCart);
+    }
+
+    clickAddToCart(){
+        this.addToCartBtn().click();
+
     }
 
     purchaseBtn() {
-        return cy.get('.col-lg-1 > .btn')
+        return cy.get(locator.purchaseBtn);
+    }
+
+    clickPurchaseBtn(){
+        this.purchaseBtn().click();
     }
 
     purchaseModal() {
-        return cy.get('#orderModal >')
+        return cy.get(locator.purchaseModal);
     }
 
     fillForm() {
@@ -25,7 +43,7 @@ class ProductPage {
     }
 
     confirmationBtn() {
-        return cy.get('#orderModal >').contains('Purchase')
+        return cy.get(locator.purchaseModal).contains('Purchase')
     }
 
     clickConfirmationBtn() {
@@ -44,18 +62,29 @@ class ProductPage {
     }
 
     confirmationAlert() {
-        return cy.get('.sweet-alert')
+        return cy.get(locator.confirmationAlert)
     }
 
     confirmationAlertTitle() {
-        return cy.get('.sweet-alert > h2')
+        return cy.get(`${locator.confirmationAlert} > h2`)
     }
 
     requestResponse() {
-        return cy.request('https://api.demoblaze.com/entries').as('clickResponse')
+        return cy.request(endPoints.entries).as('clickResponse')
             .then(res => {
                 return (res.status)
             })
+    }
+
+    addProductsToCart(quantity){
+        let products = quantity;
+
+        do {
+            this.clickRandomProductLink();
+            this.clickAddToCart();
+            this.clickNavLink('Home');
+            products--
+        }while (products > 0)
     }
 }
 

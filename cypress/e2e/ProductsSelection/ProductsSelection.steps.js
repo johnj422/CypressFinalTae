@@ -11,9 +11,8 @@ Given('I visit the Homepage', () => {
     home.navigateToHomePage();
 })
 
-When('I click the Phones button', () => {
-    home.phonesCategoryBtn().should('be.visible')
-        .click();
+When('I click the {string} button', category => {
+    home.clickCategory(category);
     product.requestResponse().should('eq', 200)
 })
 
@@ -25,59 +24,29 @@ Then('The section must contains {int} products', products => {
     home.productsList().should('have.length', products)
 })
 
-When('I click the Laptops button', () => {
-    home.laptopsCategoryBtn().should('be.visible')
-        .click();
-    product.requestResponse().should('eq', 200)
-})
-
-When('I click the Monitors button', () => {
-    home.monitorsCategoryBtn().should('be.visible')
-        .click();
-    product.requestResponse().should('eq', 200)
-})
-
 When('I click one of the products from de the Home Page', () => {
-    home.randomProductLink().click();
+    home.clickRandomProductLink();
 })
 
 And('I am now in the product page', () => {
-    home.actualUrl().should('contain', '/prod.html')
+    home.actualUrl().should('contain', '/prod')
 })
 
 And('I click the add to cart button', () => {
-    product.addToCartBtn().should('be.visible')
-        .click();
-})
-
-And('An alert window with {string} text is shown', message => {
-    cy.on('window:alert', (txt) => {
-        expect(txt).to.contain(message);
-    })
+    product.clickAddToCart();
 })
 
 Then('The product should be in the cart', () => {
-    home.cartLink().should('be.visible')
-        .click();
+    home.clickNavLink('Cart');
     cart.productsInCartContainer().should('be.visible')
 })
 
-When('I add some products to the cart', () => {
-    home.randomProductLink()
-        .click();
-    product.addToCartBtn().should('be.visible')
-        .click();
-    home.homeLink().should('be.visible')
-        .click();
-    home.randomProductLink()
-        .click();
-    product.addToCartBtn().should('be.visible')
-        .click();
+When('I add {int} products to the cart', quantity => {
+    product.addProductsToCart(quantity);
 })
 
-And('I click the cart link', () => {
-    home.cartLink().should('be.visible')
-        .click();
+And('I click the {string} link', link => {
+    home.clickNavLink(link);
 })
 
 And('I validate that there are {int} products in the cart', products => {
@@ -85,14 +54,12 @@ And('I validate that there are {int} products in the cart', products => {
 })
 
 Then('I should be able to delete one product', () => {
-    cart.deleteProductFromCart().should('be.visible')
-        .click();
+    cart.clickDeleteProduct();
     cart.productsInCartContainer().should('have.length', 1)
 })
 
 And('I click the place order button', () => {
-    product.purchaseBtn().should('be.visible')
-        .click();
+    product.clickPurchaseBtn();
 })
 
 And('I complete the form', () => {

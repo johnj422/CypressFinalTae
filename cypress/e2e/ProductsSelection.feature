@@ -9,19 +9,19 @@ Feature: Products and Categories section
 
     @regression
     Scenario: Validate Phones option
-        When I click the Phones button
+        When I click the "Phones" button
         And Products section is updated
         Then The section must contains 7 products
 
     @regression
     Scenario: Validate Laptops option
-        When I click the Laptops button
+        When I click the "Laptops" button
         And Products section is updated
         Then The section must contains 6 products
 
     @regression
     Scenario: Validate Monitors option
-        When I click the Monitors button
+        When I click the "Monitors" button
         And Products section is updated
         Then The section must contains 2 products
 
@@ -30,20 +30,19 @@ Feature: Products and Categories section
         When I click one of the products from de the Home Page
         And I am now in the product page
         And I click the add to cart button
-        And An alert window with 'Product added' text is shown
         Then The product should be in the cart
 
     @smoke @regression
     Scenario: Validate that products can be removed from the cart
-        When I add some products to the cart
-        And I click the cart link
+        When I add 2 products to the cart
+        And I click the "Cart" link
         And I validate that there are 2 products in the cart
         Then I should be able to delete one product
 
-@focus     @smoke @regression
+    @smoke @regression
     Scenario: Validate that products can be purchased
-        When I add some products to the cart
-        And I click the cart link
+        When I add 2 products to the cart
+        And I click the "Cart" link
         And I click the place order button
         And I complete the form
         Then The purchase must be completed
