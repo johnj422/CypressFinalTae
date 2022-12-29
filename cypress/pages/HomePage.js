@@ -1,3 +1,11 @@
+
+var locator = {
+    //Featured Items Locators
+    featuredItems: '#carouselExampleIndicators',
+    nextBtn: '.carousel-control-next',
+    prevBtn: '.carousel-control-prev',
+}
+
 class HomePage {
 
     //Navigation
@@ -5,116 +13,129 @@ class HomePage {
         cy.visit('/');
     }
 
-    //Locators
-    featuredItemsContainer(){
-        return cy.get('#carouselExampleIndicators > div')
+    //FeaturedItems Methods
+
+    featuredItemsContainer() {
+        return cy.get(`${locator.featuredItems} > div`);
     }
-    featuredItems() {
-        return cy.get('#carouselExampleIndicators > div > div')
+
+    featuredItemsArray() {
+        return cy.get(`${locator.featuredItems} > div > div`);
     }
-    featuredItem(itemNumber){
-        return cy.get('#carouselExampleIndicators > div > div:nth-child(' + itemNumber + ')');
+
+    featuredItemByIndex(itemNumber) {
+        return cy.get(`${locator.featuredItems} > div > div:nth-child(${itemNumber})`);
     }
-    nextBtn(){
-        return cy.get('.carousel-control-next')
+
+    nextBtn() {
+        return cy.get(locator.nextBtn);
     }
-    prevBtn(){
-        return cy.get('.carousel-control-prev')
+
+    clickNextBtn(){
+        this.nextBtn().click();
     }
-    contactLink(){
+
+    prevBtn() {
+        return cy.get(locator.prevBtn);
+    }
+
+    clickPrevBtn(){
+        this.prevBtn().click();
+    }
+    contactLink() {
         return cy.get(':nth-child(2) > .nav-link')
     }
 
-    contactModal(){
+    contactModal() {
         return cy.get('#exampleModal > div')
     }
-    contactModalTitle(){
+    contactModalTitle() {
         return cy.get('#exampleModal > .modal-dialog > .modal-content > .modal-header')
     }
-    aboutUsLink(){
+    aboutUsLink() {
         return cy.get(':nth-child(3) > .nav-link')
     }
 
-    aboutUsModal(){
+    aboutUsModal() {
         return cy.get('#videoModal > .modal-dialog')
     }
 
-    aboutUsModalTitle(){
+    aboutUsModalTitle() {
         return cy.get('#videoModal > .modal-dialog > .modal-content > .modal-header')
     }
 
-    cartLink(){
+    cartLink() {
         return cy.get('#cartur')
     }
 
-    cartLinkTitle(){
+    cartLinkTitle() {
         return cy.get('.col-lg-8 > h2')
     }
 
-    actualUrl(){
+    actualUrl() {
         return cy.url()
     }
 
-    logInLink(){
+    logInLink() {
         return cy.get('#login2')
     }
 
-    logInModal(){
+    logInModal() {
         return cy.get('#logInModal > .modal-dialog > .modal-content')
     }
 
-    logInModalTitle(){
+    logInModalTitle() {
         return cy.get('#logInModal > .modal-dialog > .modal-content > .modal-header')
     }
 
-    signUpLink(){
+    signUpLink() {
         return cy.get('#signin2')
     }
 
-    signUpModal(){
+    signUpModal() {
         return cy.get('#signInModal > .modal-dialog > .modal-content')
     }
 
-    signUpModalTitle(){
+    signUpModalTitle() {
         return cy.get('#signInModal > .modal-dialog > .modal-content > .modal-header')
     }
 
-    homeLink(){
+    homeLink() {
         return cy.get('.active > .nav-link')
     }
 
-    categoriesBtn(){
+    categoriesBtn() {
         return cy.get('#cat')
     }
 
-    phonesCategoryBtn(){
+    phonesCategoryBtn() {
         return cy.get('[onclick="byCat(\'phone\')"]')
     }
 
-    productsContainer(){
+    productsContainer() {
         return cy.get('#tbodyid')
     }
 
-    productsList(){
+    productsList() {
         return cy.get('#tbodyid > ')
     }
 
-    laptopsCategoryBtn(){
+    laptopsCategoryBtn() {
         return cy.get('[onclick="byCat(\'notebook\')"]')
     }
 
-    monitorsCategoryBtn(){
+    monitorsCategoryBtn() {
         return cy.get('[onclick="byCat(\'monitor\')"]')
     }
 
-    productRandom(){
+    productRandom() {
         let min = Math.ceil(1)
         let max = Math.floor(7)
 
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    randomProductLink(){
+    randomProductLink() {
         let num = this.productRandom()
         return cy.get(`:nth-child(${num}) > .card > .card-block > .card-title > .hrefch`)
     }

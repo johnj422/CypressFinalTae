@@ -12,22 +12,24 @@ When('I see the featured items carrousel', () => {
 })
 
 Then('The carrousel must have {int} items', items => {
-    home.featuredItems().should('have.length', items);
+    home.featuredItemsArray().should('have.length', items);
 })
 
 When('Item {int} is visible', item => {
-    home.featuredItem(item).should('be.visible')
+    home.featuredItemByIndex(item).should('be.visible')
 })
 
 And('I click the next button', () => {
-    home.nextBtn().click();
+    home.nextBtn().should('be.visible');
+    home.clickNextBtn();
 })
 
 Then('Item {int} should be visible', item => {
-    home.featuredItem(item).should('be.visible')
+    home.featuredItemByIndex(item).should('be.visible')
 })
 
 And('I click the previous button', () => {
-    home.prevBtn().click();
+    home.prevBtn().should('be.visible');
+    home.clickPrevBtn();
 })
 
