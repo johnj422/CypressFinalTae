@@ -86,6 +86,8 @@ class HomePage {
         return cy.get(locator.signUpModal)
     }
 
+    //Products and Categories Methods
+
     categoriesBtn() {
         return cy.get(locator.categoriesBtn)
     }

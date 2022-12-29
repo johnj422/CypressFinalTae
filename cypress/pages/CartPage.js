@@ -8,7 +8,6 @@ var locator = {
 class CartPage {
 
     //Locators
-
     productsInCartContainer(){
         return cy.get(locator.productsInCartContainer);
     }
